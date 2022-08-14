@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 
-import "./assets/styles/global.css"
 
 
 function App() {
@@ -13,9 +12,9 @@ function App() {
        Videos<strong id="strongHeader" className="text-zinc-900 bg-transparent">Listing</strong>
       </h1>
       </header>
-      <main>
-            <h2>pesquise o canal em que quer listar o vídeo:</h2>
-            <input type="text"/>
+      <main className="flex bg-slate-900 text-lime-300 my-5">
+            <h2 className="">pesquise o canal em que quer listar o vídeo:</h2>
+            <input type="text" className="bg-slate-100 rounded-lg"/>
       </main>
     </div>
   )
