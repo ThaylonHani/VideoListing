@@ -1,11 +1,19 @@
 import * as React from 'react';
+
 import "./assets/styles/global.css";
+import "./assets/styles/app.css";
+import "./assets/styles/videos.css";
 
 
-import "./assets/styles/app.css"
+import { Videos } from './components/Videos';
+import { discovery_v1 } from 'googleapis';
+import { useState } from 'react';
 
 function App() {
 
+  const [inputValue, setInputValue] = useState("");
+
+  
   return (
     <div className="App">
       <header>
@@ -13,9 +21,15 @@ function App() {
        Videos<strong>Listing</strong>
       </h1>
       </header>
-      <main className="flex bg-slate-100 my-5">
+      <main >
             <h2>pesquise o canal em que quer listar os vídeos:</h2>
-            <input maxLength= {30} type="text" className=" bg-slate-100 rounded-lg"/>
+            <input maxLength= {30} type="text" value ={inputValue}  onChange={e => setInputValue(e.target.value)}/>
+            <h2>Videos:</h2>
+      <div>
+        <div className="video_list">  
+      <Videos/>
+        </div>
+      </div>
       </main>
     </div>
   )

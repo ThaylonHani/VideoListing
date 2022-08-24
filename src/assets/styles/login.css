@@ -1,0 +1,20 @@
+button {
+  display: flex;
+  padding: 2.1rem;
+  width: 50%;
+  margin: auto;
+  margin-top: 20rem;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: #1b2438;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  transition: 0.2s ease-in-out;
+  opacity: 0.6;
+}
+button a {
+    text-decoration: none;
+    color: inherit
+}

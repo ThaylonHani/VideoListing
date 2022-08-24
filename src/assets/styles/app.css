@@ -4,13 +4,11 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    color: #991b1b;
+    color: #991a1a;
     padding: 2.4rem;
-    ;
-
 }
 .App header strong {
-    color : #0f172a; 
+    color : white;
 }
 
 .App main h2 {
@@ -31,4 +29,12 @@
     border: 1px solid #881337;
     border-radius: 0.7rem;
     
+}
+.App button{
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+
+.App .video_list{
+    margin-top: 1rem;
 }
