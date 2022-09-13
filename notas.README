@@ -1,0 +1,33 @@
+
+  thumbnail: string,
+    title: string,
+    href: string,
+(
+
+[{
+                thumb: item.snippet.thumbnails.medium.url,
+                title: item.snippet.title,
+                href: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+              }]
+
+)
+
+  const [thumbValue, setThumbValue] = useState("");
+  const [tittleValue, setTittleValue] = useState("");
+  const [hrefValue, setHrefValue] = useState("");
+
+          setThumbValue(thumbnails);
+          setTittleValue(names);
+          setHrefValue(href);
+
+
+          
+              href={hrefValue}
+              thumbnail={thumbValue}
+              title={tittleValue}
+
+
+
+            setHrefValue(`https://www.youtube.com/watch?v=${item.id.videoId}`);
+            setThumbValue(item.snippet.thumbnails.medium.url)
+            setTittleValue(item.snippet.title);

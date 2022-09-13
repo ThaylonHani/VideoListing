@@ -1,51 +1,26 @@
-import * as React from "react";
-import { useEffect, useState } from "react";
+import * as React from 'react';
+import { Video } from './Video';
 
-import axios from "axios";
+interface videosType {
+    videos: Object[]  
+}
 
+export function Videos({videos}:videosType) {
 
-export function Videos() {
-  interface videoProps {
-    thumbnails: string;
-    tittle: string;
-    href: string;
-  }
+    console.log(videos)
 
-  const [videos, setVideos] = useState<videoProps>({
-    thumbnails: "",
-    tittle: "",
-    href: "",
-  });
+    return (
+        <>
+            {videos.map((video)  => {
 
+                return <Video 
+                key = {Math.random()}
+                thumb= {video.snippet.thumbnails.medium.url} 
+                tittle= {video.snippet.title}
+                href = {video.id.videoId}
+                /> }
+            )}
+        </>
+    )
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=UCnOoQt51D8tHnethj9rRm6A&key=AIzaSyAYnelLuOksmQMk1xRkI11Ya0KpErA-iGo&maxResults=3&type=video&order=date"
-      )
-      .then((response) => {
-        const resp = response.data;
-        const thumbnail = resp.items[0].snippet.thumbnails.medium.url;
-        const name = resp.items[0].snippet.title;
-        const href = `https://www.youtube.com/watch?v=${resp.items[0].id.videoId}`;
-        setVideos({
-          thumbnails: thumbnail,
-          tittle: name,
-          href: href,
-        });
-      });
-  }, []);
-
-  return (
-    <div className="video_section">
-      <div className="video_section_header"></div>
-      <div className="video_section_main">
-        <img src={videos.thumbnails} alt="Imagem do Vídeo" />
-
-        <h3>
-          <a target="_blank" href={videos.href}>{videos.tittle}</a>
-        </h3>
-      </div>
-    </div>
-  );
 }
