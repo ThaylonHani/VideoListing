@@ -7,8 +7,10 @@
     outline: none;
 }
 body{
+    width: 100%;
     background-color: #0f172a;
     font-family: 'Roboto', sans-serif;
+    min-width: 320px;
 }
 body::-webkit-scrollbar{
     background-color:transparent;

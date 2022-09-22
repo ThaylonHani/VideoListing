@@ -12,7 +12,6 @@ export function Video({thumb , tittle, href}: videoParameter) {
 
   return (
     <div className="video_section">
-      <div className="video_section_header"></div>
       <div className="video_section_main">
         <img src={thumb} alt="Imagem do Vídeo" />
         <h3>

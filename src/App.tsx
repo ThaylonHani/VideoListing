@@ -1,46 +1,34 @@
-import * as React from "react";
-
 import "./assets/styles/global.css";
 import "./assets/styles/app.css";
 import "./assets/styles/videos.css";
+import search from "./assets/images/search.svg";
 
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useFetch } from "./service/useFetch";
+
 import { Videos } from "./components/Videos";
+import { useEffect, useState } from "react";
+
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState<string | undefined>("");
+  
 
-  const [videos, setVideos] = useState([
-    {
-      thumb: "",
-      title: "",
-      href: "",
-    },
-  ]);
+  
+  const API_KEY = "YOUR_API_KEY";
+  
+  
 
-  const httpApiYoutube = "https://www.googleapis.com/youtube/v3/search";
-  const keyApiYoutube = "AIzaSyAYnelLuOksmQMk1xRkI11Ya0KpErA-iGo";
-  const keyReserveApiYoutube = "AIzaSyBs3iQ2yzZr_mr1vFb_cxYfmeoQ7ZAnHuw";
 
-  const channelId = "UC6cALLZLWQGilBFBB0PWAog";
-
-  const total = 3;
-
-  function handleInputValue() {
-    setInputValue(document.querySelector("input").value);
+  const { videos } = useFetch(
+    `https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=${inputValue}&key=${API_KEY}&maxResults=${25}&type=video&order=date`,
+    inputValue
+    );
+ 
+    
+    function handleInputValue() {
+    setInputValue(document.querySelector("input")?.value);
+    setTimeout((document.querySelector("input").value = ""), 100);
   }
-
-  useEffect(() => {
-    axios
-      .get(
-        `${httpApiYoutube}?part=id%2Csnippet&channelId=${inputValue}&key=${keyReserveApiYoutube}&maxResults=${total}&type=video&order=date`
-      )
-      .then((response) => {
-        const items = response.data.items;
-        setVideos(items);
-      });
-  }, [inputValue]);
 
   return (
     <div className="App">
@@ -51,25 +39,40 @@ function App() {
       </header>
       <main>
         {inputValue == "" ? (
-          <h2>Pesquise o canal em que quer listar os vídeos:</h2>
+          <div>
+            <h4>Pesquise o canal em que quer listar os vídeos:</h4>
+          </div>
         ) : (
           ""
         )}
-        <input
-          maxLength={30}
-          type="text"
-          aria-label="Id no canal"
-          placeholder="ID do canal"
-        />
-        <button onClick={() => handleInputValue()}>Pesquisar</button>
+
+        <div className="Search">
+          <input
+            maxLength={30}
+            type="text"
+            aria-label="Id no canal"
+            placeholder="ID do canal"
+          />
+
+          <button onClick={() => handleInputValue()}>
+            <img src={search} />
+          </button>
+        </div>
+
         <div>
+          {inputValue == "" ? (
+            ""
+          ) : (
+            <>
+              <h2>Videos:</h2>
+            </>
+          )}
           <div className="video_list">
-            {inputValue == "" || null || undefined ? (
+            {inputValue == "" ? (
               ""
             ) : (
               <>
-                <h2>Videos:</h2>
-                <Videos videos={videos}/>
+                <Videos videos={videos} /> 
               </>
             )}
           </div>

@@ -7,7 +7,6 @@ interface videosType {
 
 export function Videos({videos}:videosType) {
 
-    console.log(videos)
 
     return (
         <>
