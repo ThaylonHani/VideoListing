@@ -22,7 +22,7 @@
 <h4> Para conseguir usar o programa você PRECISA de uma CHAVE API do youtube data api v3</h4>
 <h4>Quando tiver a chave api substitua ela pela constante API_KEY:</h4>
 <img src= "https://user-images.githubusercontent.com/97197486/192094543-93dca6ba-a704-487b-b401-ff441eb08727.png"/>
-<h4>Com o yarn instalado, rode o programa pelo terminal usando : "yarn dev". E acesse a rota por um browser.
+<h4>Com o yarn instalado,instale as dependencias com o comando "yarn" e rode o programa pelo terminal usando : "yarn dev", depois acesse a rota por um browser.
 </h4>
 </li>
 <li>
